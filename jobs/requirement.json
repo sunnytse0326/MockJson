@@ -1,0 +1,52 @@
+{
+	"jobType": [{
+			"id": "classic",
+			"price": 269.99
+		},
+		{
+			"id": "standout",
+			"price": 322.99
+		},
+		{
+			"id": "premium",
+			"price": 394.99
+		}
+	],
+	"rules": [{
+			"customer": "UNILEVER",
+			"oneFreeForDeal": 2
+		},
+		{
+			"customer": "APPLE",
+			"discount": [{
+				"id": "standout",
+				"numOfDeal": 1,
+				"price": 299.99
+			}]
+		},
+		{
+			"customer": "NIKE",
+			"discount": [{
+				"id": "premium",
+				"numOfDeal": 4,
+				"price": 379.99
+			}]
+		},
+		{
+			"customer": "FORD",
+			"oneFreeForDeal": 4,
+			"discount": [{
+					"id": "standard",
+					"numOfDeal": 1,
+					"price": 309.99
+				},
+				{
+					"id": "premium",
+					"numOfDeal": 3,
+					"price": 389.99
+				}
+			]
+		}
+	]
+}
+
