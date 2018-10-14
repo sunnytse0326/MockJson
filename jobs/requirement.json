@@ -14,7 +14,10 @@
 	],
 	"rules": [{
 			"customer": "UNILEVER",
-			"oneFreeForDeal": 2
+			"oneFreeForDeal": {
+				"numOfDeal": 2,
+				"id": "classic"
+			}
 		},
 		{
 			"customer": "APPLE",
@@ -34,7 +37,10 @@
 		},
 		{
 			"customer": "FORD",
-			"oneFreeForDeal": 4,
+			"oneFreeForDeal": {
+				"numOfDeal": 2,
+				"id": "classic"
+			},
 			"discounts": [{
 					"id": "standard",
 					"numOfDeal": 1,
@@ -49,4 +55,3 @@
 		}
 	]
 }
-
