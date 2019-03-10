@@ -1,0 +1,209 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is the documnetation of [Montran Server](https://github.com/sunnytse0326/montran-server), which is a security application demonstrating how to transfer money.",
+    "version": "1.0.0",
+    "title": "Montran Server",
+    "contact": {
+      "email": "sunnytse0326@gmail.com"
+    }
+  },
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "parameters": {
+    "authorizationHeader": {
+      "name": "Authorization",
+      "in": "header",
+      "type": "string",
+      "description": "Session Token from Login API response. Format with {Bearer {xxxxx}}"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/user",
+  "paths": {
+    "/register": {
+      "post": {
+        "tags": [
+          "register"
+        ],
+        "summary": "Register a new user",
+        "description": "",
+        "operationId": "addUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Registration information required from user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RegistrationUser"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User successfully register an account."
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": [
+          "login"
+        ],
+        "summary": "User login",
+        "description": "",
+        "operationId": "loginUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Login information required from user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginUser"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User successfully login account."
+          }
+        }
+      }
+    },
+    "/me": {
+      "get": {
+        "tags": [
+          "user profile"
+        ],
+        "summary": "User get the profile",
+        "description": "User get the profile",
+        "operationId": "userProfile",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/authorizationHeader"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User successfully get account profile."
+          }
+        }
+      }
+    },
+    "/transaction": {
+      "post": {
+        "tags": [
+          "transaction"
+        ],
+        "summary": "User transfer the currency",
+        "description": "User transfer the currency",
+        "operationId": "userTransaction",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/authorizationHeader"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Transaction ID from third party payment",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Transaction"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User successfully transfer the payment."
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "RegistrationUser": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "example": "Test"
+        },
+        "lastName": {
+          "type": "string",
+          "example": "Test"
+        },
+        "email": {
+          "type": "string",
+          "example": "test@test.com"
+        },
+        "password": {
+          "type": "string",
+          "description": "Hashed format"
+        }
+      },
+      "xml": {
+        "name": "RegistrationUser"
+      }
+    },
+    "LoginUser": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "test@test.com"
+        },
+        "password": {
+          "type": "string",
+          "description": "Hashed format"
+        }
+      },
+      "xml": {
+        "name": "LoginUser"
+      }
+    },
+    "Transaction": {
+      "type": "object",
+      "properties": {
+        "transactionId": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Transaction"
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Gitlab source code",
+    "url": "https://github.com/sunnytse0326/montran-server"
+  }
+}
